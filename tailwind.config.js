@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-      
+
 
       navCol:
 
@@ -13,7 +13,7 @@ module.exports = {
 {
   50: '#f5effb',
   100: '#dad5df',
-  200: '#bfbac5',
+  200: '#2B3148',
   300: '#a69fad',
   400: '#8c8394',
   500: '#736a7b',
