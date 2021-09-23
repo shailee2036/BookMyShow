@@ -26,3 +26,9 @@ color: black !important;
 background-color:transparent;
 
 }
+
+.next-slick-arrow,
+.prev-slick-arrow {
+  color: white;
+  font-size: 48px;
+}

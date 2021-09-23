@@ -1,8 +1,10 @@
-import React from "react";
-import HeroSlider from "react-slick";
-import {GrNext,GrPrevious} from "react-icons/gr";
-import {NextArrow, PrevArrow} from "./Arrows.component";
+import React,{useState,useEffect} from "react";
 
+
+import HeroSlider from "react-slick";
+//import {GrNext,GrPrevious} from "react-icons/gr";
+import {NextArrow, PrevArrow} from "./Arrows.component";
+import axios from "axios";
 
 
 // Import css files
@@ -10,6 +12,19 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const HeroCarousal = () => {
+
+const [images, setImages] = useState([]);
+
+useEffect(() =>{
+  const requestNowPlayingMovies = async() =>{
+    const getImages = await axios.get("/movie/now_playing");
+  setImages(getImages.data.results);
+};
+requestNowPlayingMovies();
+}, []);
+
+
+
   const settingsLg = {
     arrows: true,
     autoplay: true,
@@ -34,13 +49,7 @@ const HeroCarousal = () => {
     prevArrow:<PrevArrow />
   };
 
-const images =[
-  "https://in.bmscdn.com/iedb/movies/images/mobile/listing/xxlarge/bell-bottom-et00117102-14-08-2021-04-33-35.jpg",
-  "https://mekhato.com/wp-content/uploads/2021/07/shershaah-sidharth-malhotra-1000x600.jpg",
-  "https://images.hindustantimes.com/rf/image_size_960x540/HT/p2/2020/06/29/Pictures/_75bae9f8-ba0a-11ea-b411-fb55c265b659.jpg",
-  "https://bollywoodground.com/wp-content/uploads/2021/02/chehre-movie-poster.png",
-  "https://i.ytimg.com/vi/psdS0wYRvR8/maxresdefault.jpg"
-]
+
 
   return (
     <>
@@ -49,7 +58,7 @@ const images =[
   {
     images.map((image) => (
       <div className="w-full h-64 md:h-80 py-3">
-      <img src={image} alt="testing" className="w-full h-full rounded-md"/>
+      <img src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`} alt="testing" className="w-full h-full rounded-md"/>
       </div>
     ))
   }
@@ -61,7 +70,7 @@ const images =[
   {
     images.map((image) => (
       <div className="w-full h-96 px-2 py-3">
-      <img src={image} alt="testing" className="w-full h-full rounded-md"/>
+      <img src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`} alt="testing" className="w-full h-full rounded-md"/>
       </div>
     ))
   }

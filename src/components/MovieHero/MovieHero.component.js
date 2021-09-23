@@ -66,7 +66,7 @@ const MovieHero = () => {
               <div className='text-white mt-2 py-2 text-base font-thin rounded-sm '>
                 2h 12m • Action , Adventure , Fantasy • UA • 3 Sep
               </div>
-              <button class='bg-vaish-300  text-white mt-10 py-2 mt-1 px-11 rounded-lg'>
+              <button  class='bg-vaish-300  text-white mt-10 py-2 mt-1 px-11 rounded-lg'>
                 Book tickets
               </button>
             </div>
