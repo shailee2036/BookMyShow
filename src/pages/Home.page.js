@@ -9,6 +9,9 @@ import TempPosters from "../config/TempPosters.config";
 const HomePage = () => {
 
 const [popularMovies, setPopularMovies] = useState([]);
+const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+
 
 useEffect(() => {
   const requestPopularMovies = async () => {
@@ -19,6 +22,25 @@ useEffect(() => {
 },[]);
 
 console.log({popularMovies});
+
+useEffect(() => {
+   const requestTopRatedMovies = async () => {
+     const getTopRatedMovies = await axios.get("/movie/top_rated");
+     setTopRatedMovies(getTopRatedMovies.data.results);
+   };
+
+   requestTopRatedMovies();
+ }, []);
+
+ useEffect(() => {
+   const requestUpcomingMovies = async () => {
+     const getUpcomingMovies = await axios.get("/movie/upcoming");
+     setUpcomingMovies(getUpcomingMovies.data.results);
+   };
+
+   requestUpcomingMovies();
+ }, []);
+
 
   return (
   <>
@@ -47,7 +69,7 @@ console.log({popularMovies});
 
   <div className="container mx-auto px-4">
   <PosterSlider
-  images={popularMovies}
+  images={topRatedMovies}
   title="Online Streaming Events"
   isDark={false}
   />
@@ -55,7 +77,7 @@ console.log({popularMovies});
 
   <div className="container mx-auto px-4">
   <PosterSlider
-  images={popularMovies}
+  images={upcomingMovies}
   title="Outdoor Events"
   isDark={false}
   />

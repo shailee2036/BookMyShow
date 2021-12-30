@@ -1,5 +1,5 @@
 import React from 'react';
-
+/*
 const PlaysPoster = (props) => {
   return (
     <div className='flex flex-col justify-between '>
@@ -25,5 +25,5 @@ const PlaysRow = (props) => {
     </>
   );
 };
-
-export default PlaysRow;
+*/
+//export default PlaysRow;
